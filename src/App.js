@@ -9,24 +9,31 @@ import {
 import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import PostDetail from './Components/PostDetail/PostDetail';
+import { useState } from 'react';
+
+
 
 function App() {
+  // const classNames = {
+  //   dark: "App-header",
+  //   light: "App-header-light"
+  // };
+  const dark = "App-header";
+  const light = "App-header-light";
+  const [className, setClassName] = useState(dark);
+  const handleMode = ()=>{
+    return className === dark ? setClassName(light) : className === light ? setClassName(dark) : setClassName(dark);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
+      <header className={className}>
+        <button onClick={()=> handleMode()}>Switch Mode</button>
       <Router>
       <div>
-        <ul>
-          <li>
             <Link to="/">Home</Link>
-          </li>
-          <li>
             <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
 
         <hr />
 
